@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		19AA0B85241E5AD8004E6BC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0B84241E5AD8004E6BC9 /* AppDelegate.swift */; };
 		19AA0B87241E5AD8004E6BC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0B86241E5AD8004E6BC9 /* SceneDelegate.swift */; };
-		19AA0B89241E5AD8004E6BC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0B88241E5AD8004E6BC9 /* ViewController.swift */; };
 		19AA0B8C241E5AD8004E6BC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AA0B8A241E5AD8004E6BC9 /* Main.storyboard */; };
 		19AA0B8E241E5AE2004E6BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AA0B8D241E5AE2004E6BC9 /* Assets.xcassets */; };
 		19AA0B91241E5AE2004E6BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AA0B8F241E5AE2004E6BC9 /* LaunchScreen.storyboard */; };
 		19AA0B9C241E5AE3004E6BC9 /* FundaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0B9B241E5AE3004E6BC9 /* FundaTests.swift */; };
 		19AA0BA7241E5AE3004E6BC9 /* FundaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BA6241E5AE3004E6BC9 /* FundaUITests.swift */; };
+		19AA0BB6241E5B4D004E6BC9 /* Aanbod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BB5241E5B4D004E6BC9 /* Aanbod.swift */; };
+		19AA0BB8241E5C44004E6BC9 /* DataDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BB7241E5C44004E6BC9 /* DataDefinitions.swift */; };
+		19AA0BBB241E5EF4004E6BC9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BBA241E5EF4004E6BC9 /* Strings.swift */; };
+		19AA0BC0241E74B4004E6BC9 /* AanbodFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BBF241E74B4004E6BC9 /* AanbodFetcher.swift */; };
+		19AA0BC3241E85F4004E6BC9 /* AanbodCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BC2241E85F4004E6BC9 /* AanbodCache.swift */; };
+		19AA0BC7241EAB5B004E6BC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BC6241EAB5B004E6BC9 /* MainViewController.swift */; };
+		19AA0BC9241EBF05004E6BC9 /* Makelaar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BC8241EBF05004E6BC9 /* Makelaar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +44,6 @@
 		19AA0B81241E5AD8004E6BC9 /* Funda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AA0B84241E5AD8004E6BC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19AA0B86241E5AD8004E6BC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		19AA0B88241E5AD8004E6BC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		19AA0B8B241E5AD8004E6BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19AA0B8D241E5AE2004E6BC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19AA0B90241E5AE2004E6BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		19AA0BA2241E5AE3004E6BC9 /* FundaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FundaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AA0BA6241E5AE3004E6BC9 /* FundaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundaUITests.swift; sourceTree = "<group>"; };
 		19AA0BA8241E5AE3004E6BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19AA0BB5241E5B4D004E6BC9 /* Aanbod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aanbod.swift; sourceTree = "<group>"; };
+		19AA0BB7241E5C44004E6BC9 /* DataDefinitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDefinitions.swift; sourceTree = "<group>"; };
+		19AA0BBA241E5EF4004E6BC9 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		19AA0BBF241E74B4004E6BC9 /* AanbodFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AanbodFetcher.swift; sourceTree = "<group>"; };
+		19AA0BC2241E85F4004E6BC9 /* AanbodCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AanbodCache.swift; sourceTree = "<group>"; };
+		19AA0BC6241EAB5B004E6BC9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		19AA0BC8241EBF05004E6BC9 /* Makelaar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makelaar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +111,12 @@
 		19AA0B83241E5AD8004E6BC9 /* Funda */ = {
 			isa = PBXGroup;
 			children = (
-				19AA0B84241E5AD8004E6BC9 /* AppDelegate.swift */,
-				19AA0B86241E5AD8004E6BC9 /* SceneDelegate.swift */,
-				19AA0B88241E5AD8004E6BC9 /* ViewController.swift */,
-				19AA0B8A241E5AD8004E6BC9 /* Main.storyboard */,
-				19AA0B8D241E5AE2004E6BC9 /* Assets.xcassets */,
-				19AA0B8F241E5AE2004E6BC9 /* LaunchScreen.storyboard */,
-				19AA0B92241E5AE2004E6BC9 /* Info.plist */,
+				19AA0BC5241EAB25004E6BC9 /* Application */,
+				19AA0BC4241EAB18004E6BC9 /* UI */,
+				19AA0BC1241E85DB004E6BC9 /* Cache */,
+				19AA0BBE241E749F004E6BC9 /* Network */,
+				19AA0BB9241E5EC5004E6BC9 /* Extensions */,
+				19AA0BB4241E5AF5004E6BC9 /* Data model */,
 			);
 			path = Funda;
 			sourceTree = "<group>";
@@ -126,6 +137,61 @@
 				19AA0BA8241E5AE3004E6BC9 /* Info.plist */,
 			);
 			path = FundaUITests;
+			sourceTree = "<group>";
+		};
+		19AA0BB4241E5AF5004E6BC9 /* Data model */ = {
+			isa = PBXGroup;
+			children = (
+				19AA0BB5241E5B4D004E6BC9 /* Aanbod.swift */,
+				19AA0BB7241E5C44004E6BC9 /* DataDefinitions.swift */,
+				19AA0BC8241EBF05004E6BC9 /* Makelaar.swift */,
+			);
+			name = "Data model";
+			sourceTree = "<group>";
+		};
+		19AA0BB9241E5EC5004E6BC9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				19AA0BBA241E5EF4004E6BC9 /* Strings.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		19AA0BBE241E749F004E6BC9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				19AA0BBF241E74B4004E6BC9 /* AanbodFetcher.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		19AA0BC1241E85DB004E6BC9 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				19AA0BC2241E85F4004E6BC9 /* AanbodCache.swift */,
+			);
+			name = Cache;
+			sourceTree = "<group>";
+		};
+		19AA0BC4241EAB18004E6BC9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				19AA0B8F241E5AE2004E6BC9 /* LaunchScreen.storyboard */,
+				19AA0B8A241E5AD8004E6BC9 /* Main.storyboard */,
+				19AA0BC6241EAB5B004E6BC9 /* MainViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		19AA0BC5241EAB25004E6BC9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				19AA0B84241E5AD8004E6BC9 /* AppDelegate.swift */,
+				19AA0B86241E5AD8004E6BC9 /* SceneDelegate.swift */,
+				19AA0B92241E5AE2004E6BC9 /* Info.plist */,
+				19AA0B8D241E5AE2004E6BC9 /* Assets.xcassets */,
+			);
+			name = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +325,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19AA0B89241E5AD8004E6BC9 /* ViewController.swift in Sources */,
+				19AA0BC0241E74B4004E6BC9 /* AanbodFetcher.swift in Sources */,
+				19AA0BB8241E5C44004E6BC9 /* DataDefinitions.swift in Sources */,
 				19AA0B85241E5AD8004E6BC9 /* AppDelegate.swift in Sources */,
+				19AA0BB6241E5B4D004E6BC9 /* Aanbod.swift in Sources */,
+				19AA0BC3241E85F4004E6BC9 /* AanbodCache.swift in Sources */,
+				19AA0BBB241E5EF4004E6BC9 /* Strings.swift in Sources */,
 				19AA0B87241E5AD8004E6BC9 /* SceneDelegate.swift in Sources */,
+				19AA0BC7241EAB5B004E6BC9 /* MainViewController.swift in Sources */,
+				19AA0BC9241EBF05004E6BC9 /* Makelaar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
