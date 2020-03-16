@@ -12,7 +12,6 @@
 		19AA0B8C241E5AD8004E6BC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AA0B8A241E5AD8004E6BC9 /* Main.storyboard */; };
 		19AA0B8E241E5AE2004E6BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AA0B8D241E5AE2004E6BC9 /* Assets.xcassets */; };
 		19AA0B91241E5AE2004E6BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AA0B8F241E5AE2004E6BC9 /* LaunchScreen.storyboard */; };
-		19AA0B9C241E5AE3004E6BC9 /* FundaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0B9B241E5AE3004E6BC9 /* FundaTests.swift */; };
 		19AA0BA7241E5AE3004E6BC9 /* FundaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BA6241E5AE3004E6BC9 /* FundaUITests.swift */; };
 		19AA0BB6241E5B4D004E6BC9 /* Aanbod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BB5241E5B4D004E6BC9 /* Aanbod.swift */; };
 		19AA0BB8241E5C44004E6BC9 /* DataDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BB7241E5C44004E6BC9 /* DataDefinitions.swift */; };
@@ -22,6 +21,7 @@
 		19AA0BC7241EAB5B004E6BC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BC6241EAB5B004E6BC9 /* MainViewController.swift */; };
 		19AA0BC9241EBF05004E6BC9 /* Makelaar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BC8241EBF05004E6BC9 /* Makelaar.swift */; };
 		19AA0BCB241F6A7D004E6BC9 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BCA241F6A7D004E6BC9 /* Alerts.swift */; };
+		19AA0BCE241FEE6F004E6BC9 /* AanbodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0BCD241FEE6F004E6BC9 /* AanbodTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 		19AA0B90241E5AE2004E6BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19AA0B92241E5AE2004E6BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AA0B97241E5AE3004E6BC9 /* FundaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FundaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		19AA0B9B241E5AE3004E6BC9 /* FundaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundaTests.swift; sourceTree = "<group>"; };
 		19AA0B9D241E5AE3004E6BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AA0BA2241E5AE3004E6BC9 /* FundaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FundaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AA0BA6241E5AE3004E6BC9 /* FundaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundaUITests.swift; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		19AA0BC6241EAB5B004E6BC9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		19AA0BC8241EBF05004E6BC9 /* Makelaar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makelaar.swift; sourceTree = "<group>"; };
 		19AA0BCA241F6A7D004E6BC9 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		19AA0BCD241FEE6F004E6BC9 /* AanbodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AanbodTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +126,8 @@
 		19AA0B9A241E5AE3004E6BC9 /* FundaTests */ = {
 			isa = PBXGroup;
 			children = (
-				19AA0B9B241E5AE3004E6BC9 /* FundaTests.swift */,
 				19AA0B9D241E5AE3004E6BC9 /* Info.plist */,
+				19AA0BCD241FEE6F004E6BC9 /* AanbodTests.swift */,
 			);
 			path = FundaTests;
 			sourceTree = "<group>";
@@ -268,6 +268,7 @@
 					};
 					19AA0B96241E5AE3004E6BC9 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 19AA0B80241E5AD8004E6BC9;
 					};
 					19AA0BA1241E5AE3004E6BC9 = {
@@ -345,7 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19AA0B9C241E5AE3004E6BC9 /* FundaTests.swift in Sources */,
+				19AA0BCE241FEE6F004E6BC9 /* AanbodTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +548,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X37H2S679C;
 				INFOPLIST_FILE = FundaTests/Info.plist;
@@ -558,6 +560,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hu.lovastyik.FundaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Funda.app/Funda";
@@ -569,6 +572,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X37H2S679C;
 				INFOPLIST_FILE = FundaTests/Info.plist;
