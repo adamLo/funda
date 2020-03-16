@@ -127,6 +127,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        guard let `cache` = cache, cache.top10Agencies.count > indexPath.section else {return}
+        let summary = cache.top10Agencies[indexPath.section]
+        let aanbods = cache.aanbods(of: summary.makelaar)
+        guard indexPath.row < aanbods.count else {return}
+        let aanbod = aanbods[indexPath.row]
+        
+        guard let url = URL(string: aanbod.url), UIApplication.shared.canOpenURL(url) else {return}
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // MARK: - Actions
