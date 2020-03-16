@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		197643FC241FFACA006314AF /* AanbodCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197643FB241FFACA006314AF /* AanbodCacheTests.swift */; };
 		19AA0B85241E5AD8004E6BC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0B84241E5AD8004E6BC9 /* AppDelegate.swift */; };
 		19AA0B87241E5AD8004E6BC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA0B86241E5AD8004E6BC9 /* SceneDelegate.swift */; };
 		19AA0B8C241E5AD8004E6BC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AA0B8A241E5AD8004E6BC9 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		197643FB241FFACA006314AF /* AanbodCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AanbodCacheTests.swift; sourceTree = "<group>"; };
 		19AA0B81241E5AD8004E6BC9 /* Funda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AA0B84241E5AD8004E6BC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19AA0B86241E5AD8004E6BC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				19AA0B9D241E5AE3004E6BC9 /* Info.plist */,
 				19AA0BCD241FEE6F004E6BC9 /* AanbodTests.swift */,
+				197643FB241FFACA006314AF /* AanbodCacheTests.swift */,
 			);
 			path = FundaTests;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19AA0BCE241FEE6F004E6BC9 /* AanbodTests.swift in Sources */,
+				197643FC241FFACA006314AF /* AanbodCacheTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

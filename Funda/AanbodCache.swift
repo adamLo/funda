@@ -114,7 +114,7 @@ class AanbodCache {
         aanbodFetcher.fetch(query: query, startPage: aanbodFetcher.pageIndex, completion: completion)
     }
     
-    private func process(results: [Aanbod]) {
+    func process(results: [Aanbod]) {
             
         // Contains hash of agencyId: count
         var agenciesCount = [Int: Int]()

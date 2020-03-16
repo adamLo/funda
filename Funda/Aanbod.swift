@@ -32,6 +32,15 @@ struct Aanbod: JSONDeserializable {
         self.adres = _adres
     }
     
+    init(id: String, makelaar: Makelaar, url: String, woonplaats: String, adres: String) {
+        
+        self.id = id
+        self.makelaar = makelaar
+        self.url = url
+        self.woonplaats = woonplaats
+        self.adres = adres
+    }
+    
     private struct JSONKeys {
         static let id           = "Id"
         static let makelaarId   = "MakelaarId"
