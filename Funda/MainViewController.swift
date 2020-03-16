@@ -30,6 +30,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         setupUI()
+        setupViewIdentifiers()
     }
     
     // MARK: - UI Customization
@@ -51,6 +52,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         locationTextField.text = nil
         locationTextField.placeholder = NSLocalizedString("Location", comment: "Location placeholder")
+        
+        gardenLabel.text = NSLocalizedString("with garden", comment: "Garden filter switch title")
         
         gardenSwitch.isOn = false
     }
@@ -178,5 +181,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.propertiesTableView.reloadData()
             self?.searchProgressView.progress = progress ?? 0
         }
+    }
+    
+    // MARK: - UI Testing
+       
+    private func setupViewIdentifiers() {
+
+        propertiesTableView.accessibilityIdentifier = "main.tableview.properties"
+        
+        locationTextField.accessibilityIdentifier = "main.textfield.location"
+        gardenSwitch.accessibilityIdentifier = "main.switch.garden"
+        gardenLabel.accessibilityIdentifier = "main.label.garden"
+        searchButton.accessibilityIdentifier = "main.button.search"
+        
+        searchActivityIndicator.accessibilityIdentifier = "main.activity.search"
+        searchProgressView.accessibilityIdentifier = "main.progress.search"
+                
+        navigationController?.navigationBar.accessibilityIdentifier = "main.navbar"
     }
 }
