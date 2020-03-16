@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias AanbodCompletion = ((_ results: [Aanbod]?, _ error: Error?) -> ())
+typealias AanbodCompletion = ((_ results: [Aanbod]?, _ pageCount: Int?, _ error: Error?) -> ())
 
 class AanbodFetcher {
     
@@ -32,6 +32,8 @@ class AanbodFetcher {
     
     private struct JSONKeys {
         static let objects      = "Objects"
+        static let paging       = "Paging"
+        static let pageCount    = "AantalPaginas"
     }
     
     enum SearchType: String {
@@ -41,7 +43,7 @@ class AanbodFetcher {
     func fetch(type: SearchType = .koop, query: String? = nil, startPage: Int = 1, pageSize: Int = 25, completion: AanbodCompletion?) {
         
         guard var urlComponents = URLComponents(url: baseURL.appendingPathComponent("json").appendingPathComponent(apiKey).appendingPathComponent(""), resolvingAgainstBaseURL: false) else {
-            completion?(nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Cannot construct URL"]))
+            completion?(nil, nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Cannot construct URL"]))
             return
         }
         var queryItems = [URLQueryItem]()
@@ -54,7 +56,7 @@ class AanbodFetcher {
         urlComponents.queryItems = queryItems
         
         guard let url = urlComponents.url else {
-            completion?(nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -2, userInfo: [NSLocalizedDescriptionKey: "Cannot construct URL"]))
+            completion?(nil, nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -2, userInfo: [NSLocalizedDescriptionKey: "Cannot construct URL"]))
             return
         }
         
@@ -64,23 +66,28 @@ class AanbodFetcher {
             
             if let _error = error {
                 DispatchQueue.main.async {
-                    completion?(nil, _error)
+                    completion?(nil, nil, _error)
                 }
                 return
             }
                         
             guard let _data = data, let json = try? JSONSerialization.jsonObject(with: _data, options: []) as? JSON else {
                 DispatchQueue.main.async {
-                    completion?(nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -3, userInfo: [NSLocalizedDescriptionKey: "No valid JSON response received"]))
+                    completion?(nil, nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -3, userInfo: [NSLocalizedDescriptionKey: "No valid JSON response received"]))
                 }
                 return
             }
             
             guard let objects = json[JSONKeys.objects] as? JSONArray else {
                 DispatchQueue.main.async {
-                    completion?(nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -4, userInfo: [NSLocalizedDescriptionKey: "Invalid JSON"]))
+                    completion?(nil, nil, NSError(domain: AanbodFetcher.ErrorDomain, code: -4, userInfo: [NSLocalizedDescriptionKey: "Invalid JSON"]))
                 }
                 return
+            }
+            
+            var pageCount: Int?
+            if let paging = json[JSONKeys.paging] as? JSON  {
+                pageCount = paging[JSONKeys.pageCount] as? Int
             }
             
             var results = [Aanbod]()
@@ -91,7 +98,7 @@ class AanbodFetcher {
             
             DispatchQueue.main.async {
                 self.pageIndex += 1
-                completion?(results, nil)
+                completion?(results, pageCount, nil)
             }
         }
         task.resume()

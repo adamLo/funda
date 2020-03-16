@@ -18,7 +18,7 @@ class AanbodCache {
     private var allData = [Aanbod]()
     private(set) var top10Agencies = [MakelaarSummary]()
     
-    var dataUpdated: (() -> ())?
+    var dataUpdated: ((_ progress: Float?) -> ())?
     var errorOccured: ((_ error: Error) -> ())?
     
     let query: String?
@@ -32,7 +32,7 @@ class AanbodCache {
         
     init(query: String) {
         
-        self.query = query
+        self.query = query.prefix(1) == "/" ? query : "/\(query)"
         aanbodFetcher = AanbodFetcher()
         aanbodFetcher.query = query
     }
@@ -52,7 +52,7 @@ class AanbodCache {
         
         isFetching = true
         
-        let completion: AanbodCompletion = {[weak self] (results, error) in
+        let completion: AanbodCompletion = {[weak self] (results, pageCount, error) in
             
             guard let `self` = self else {
                 finished?()
@@ -66,14 +66,21 @@ class AanbodCache {
             }
             else if let _results = results {
                 if _results.isEmpty {
-                    finished?()
+                    DispatchQueue.main.async {
+                        finished?()
+                    }
                 }
                 else {
+                    
+                    var progress: Float?
+                    if let _pageCount = pageCount, _pageCount > 0 {
+                        progress = Float(self.aanbodFetcher.pageIndex) / Float(_pageCount)
+                    }
+                    
                     DispatchQueue.global(qos: .userInitiated).async {
                         self.process(results: _results)
                         DispatchQueue.main.async {
-                            self.dataUpdated?()
-                            finished?()
+                            self.dataUpdated?(progress)
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + AanbodCache.queryDelayInterval) {
                             self.start(reset: false, finished: finished)
@@ -82,7 +89,9 @@ class AanbodCache {
                 }
             }
             else {
-                finished?()
+                DispatchQueue.main.async {
+                    finished?()
+                }
             }
         }
         

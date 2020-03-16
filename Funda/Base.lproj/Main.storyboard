@@ -32,31 +32,91 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l55-zq-NZV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="124.66666666666669" width="414" height="611.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Wt8-Qr-1rx" id="Go6-5C-2VA"/>
                                     <outlet property="delegate" destination="Wt8-Qr-1rx" id="s5U-qY-nPe"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sah-FM-cXp" userLabel="Header">
+                                <rect key="frame" x="0.0" y="44.000000000000007" width="414" height="80.666666666666686"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4V2-Hr-syU">
+                                        <rect key="frame" x="8" y="5" width="145" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I14-NX-WD4">
+                                        <rect key="frame" x="168" y="6.6666666666666643" width="51" height="31"/>
+                                    </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6K7-EY-0SP">
+                                        <rect key="frame" x="361" y="7" width="48" height="30"/>
+                                        <state key="normal" title="Search"/>
+                                        <connections>
+                                            <action selector="searchButtonTouched:" destination="Wt8-Qr-1rx" eventType="touchUpInside" id="v55-YA-2Th"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With garden" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxr-4p-WY3">
+                                        <rect key="frame" x="220" y="11.666666666666664" width="94" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="x6j-Km-cT8">
+                                        <rect key="frame" x="197" y="52.666666666666671" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CYm-O2-bz4">
+                                        <rect key="frame" x="0.0" y="77.666666666666671" width="414" height="2"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="jxr-4p-WY3" firstAttribute="leading" secondItem="I14-NX-WD4" secondAttribute="trailing" constant="3" id="4QC-P3-oxC"/>
+                                    <constraint firstItem="6K7-EY-0SP" firstAttribute="centerY" secondItem="4V2-Hr-syU" secondAttribute="centerY" id="5Nb-H6-4E3"/>
+                                    <constraint firstItem="jxr-4p-WY3" firstAttribute="centerY" secondItem="I14-NX-WD4" secondAttribute="centerY" id="Bnc-vx-cbU"/>
+                                    <constraint firstItem="x6j-Km-cT8" firstAttribute="centerX" secondItem="Sah-FM-cXp" secondAttribute="centerX" id="DJB-2Z-q3b"/>
+                                    <constraint firstAttribute="trailing" secondItem="CYm-O2-bz4" secondAttribute="trailing" id="DMl-xG-nzJ"/>
+                                    <constraint firstItem="4V2-Hr-syU" firstAttribute="width" secondItem="Sah-FM-cXp" secondAttribute="width" multiplier="0.35" id="INu-Xa-Shz"/>
+                                    <constraint firstItem="I14-NX-WD4" firstAttribute="leading" secondItem="4V2-Hr-syU" secondAttribute="trailing" constant="15" id="cVq-08-d7o"/>
+                                    <constraint firstItem="4V2-Hr-syU" firstAttribute="leading" secondItem="Sah-FM-cXp" secondAttribute="leading" constant="8" id="cnX-dm-xbJ"/>
+                                    <constraint firstItem="CYm-O2-bz4" firstAttribute="leading" secondItem="Sah-FM-cXp" secondAttribute="leading" id="fMw-QX-NyJ"/>
+                                    <constraint firstItem="I14-NX-WD4" firstAttribute="centerY" secondItem="4V2-Hr-syU" secondAttribute="centerY" id="ojN-eA-TBk"/>
+                                    <constraint firstItem="x6j-Km-cT8" firstAttribute="top" secondItem="I14-NX-WD4" secondAttribute="bottom" constant="15" id="oms-dI-UWL"/>
+                                    <constraint firstItem="6K7-EY-0SP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jxr-4p-WY3" secondAttribute="trailing" constant="5" id="pod-tW-aCf"/>
+                                    <constraint firstItem="CYm-O2-bz4" firstAttribute="top" secondItem="x6j-Km-cT8" secondAttribute="bottom" constant="5" id="q8s-0h-NZJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="6K7-EY-0SP" secondAttribute="trailing" constant="5" id="slq-tK-s3N"/>
+                                    <constraint firstItem="4V2-Hr-syU" firstAttribute="top" secondItem="Sah-FM-cXp" secondAttribute="top" constant="5" id="vDU-Ip-3fP"/>
+                                    <constraint firstAttribute="bottom" secondItem="CYm-O2-bz4" secondAttribute="bottom" constant="1" id="vEl-cm-kYo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Sah-FM-cXp" firstAttribute="top" secondItem="nk6-jU-eXv" secondAttribute="top" id="1h8-AA-c6P"/>
+                            <constraint firstItem="l55-zq-NZV" firstAttribute="top" secondItem="Sah-FM-cXp" secondAttribute="bottom" id="9P3-tA-M2B"/>
                             <constraint firstItem="nk6-jU-eXv" firstAttribute="bottom" secondItem="l55-zq-NZV" secondAttribute="bottom" id="9Tt-AH-QVe"/>
-                            <constraint firstItem="l55-zq-NZV" firstAttribute="top" secondItem="nk6-jU-eXv" secondAttribute="top" id="BB3-bl-Vzc"/>
-                            <constraint firstItem="nk6-jU-eXv" firstAttribute="trailing" secondItem="l55-zq-NZV" secondAttribute="trailing" id="P8X-6F-TUl"/>
+                            <constraint firstItem="Sah-FM-cXp" firstAttribute="leading" secondItem="nk6-jU-eXv" secondAttribute="leading" id="cw2-Bf-7YR"/>
+                            <constraint firstItem="l55-zq-NZV" firstAttribute="trailing" secondItem="nk6-jU-eXv" secondAttribute="trailing" id="hxE-2J-8zp"/>
+                            <constraint firstItem="nk6-jU-eXv" firstAttribute="trailing" secondItem="Sah-FM-cXp" secondAttribute="trailing" id="jIV-MN-L1W"/>
                             <constraint firstItem="l55-zq-NZV" firstAttribute="leading" secondItem="nk6-jU-eXv" secondAttribute="leading" id="y4B-gN-C7q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nk6-jU-eXv"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ron-lC-7gA"/>
                     <connections>
+                        <outlet property="gardenLabel" destination="jxr-4p-WY3" id="GQs-o8-cjp"/>
+                        <outlet property="gardenSwitch" destination="I14-NX-WD4" id="asv-N1-1ih"/>
+                        <outlet property="locationTextField" destination="4V2-Hr-syU" id="zqQ-ua-wBV"/>
                         <outlet property="propertiesTableView" destination="l55-zq-NZV" id="4T4-np-Ogr"/>
+                        <outlet property="searchActivityIndicator" destination="x6j-Km-cT8" id="x8g-N5-qGw"/>
+                        <outlet property="searchButton" destination="6K7-EY-0SP" id="n1H-7e-oiy"/>
+                        <outlet property="searchProgressView" destination="CYm-O2-bz4" id="5W2-mE-tOQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTs-m4-Pzd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410" y="124"/>
+            <point key="canvasLocation" x="408.69565217391306" y="123.91304347826087"/>
         </scene>
     </scenes>
 </document>
