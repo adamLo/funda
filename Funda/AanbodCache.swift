@@ -29,6 +29,8 @@ class AanbodCache {
     static let queryDelayInterval: TimeInterval = 0.25
     
     private let dataProcessQueue = DispatchQueue(label: "DataProcess")
+    
+    private(set) var isStopped = false
         
     init(query: String) {
         
@@ -39,15 +41,21 @@ class AanbodCache {
     
     func start(reset: Bool = false, finished: (() -> ())?) {
         
-        guard !isFetching else {
-            finished?()
-            return
+        if isStopped {
+            if !reset {
+                finished?()
+                return
+            }
+            else {
+                isStopped = false
+            }
         }
         
         if reset {
             dataProcessQueue.async {
                 self.allData.removeAll()
             }
+            isStopped = false
         }
         
         isFetching = true
@@ -59,14 +67,13 @@ class AanbodCache {
                 return
             }
             
-            self.isFetching = false
-            
             if let _error = error {
                 self.errorOccured?(_error)
             }
             else if let _results = results {
                 if _results.isEmpty {
                     DispatchQueue.main.async {
+                        self.isFetching = false
                         finished?()
                     }
                 }
@@ -82,14 +89,23 @@ class AanbodCache {
                         DispatchQueue.main.async {
                             self.dataUpdated?(progress)
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + AanbodCache.queryDelayInterval) {
-                            self.start(reset: false, finished: finished)
+                        if self.isStopped {
+                            DispatchQueue.main.async {
+                                self.isFetching = false
+                                finished?()
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + AanbodCache.queryDelayInterval) {
+                                self.start(reset: false, finished: finished)
+                            }
                         }
                     }
                 }
             }
             else {
                 DispatchQueue.main.async {
+                    self.isFetching = false
                     finished?()
                 }
             }
@@ -154,5 +170,9 @@ class AanbodCache {
         }
         
         return aanbods
+    }
+    
+    func stop() {
+        isStopped = true
     }
 }

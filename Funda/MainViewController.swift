@@ -36,15 +36,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private func setupUI() {
         
+        title = "Funda"
+        
         setupHeader()
         setupTableView()
-        toggleSearchActivity(isActive: false)
+        toggleSearch(inProgress: false)
     }
     
     private func setupHeader() {
         
-        toggleSearchActivity(isActive: false)
+        toggleSearch(inProgress: false)
+        
         searchActivityIndicator.tintColor = UIColor.black
+        
+        locationTextField.text = nil
+        locationTextField.placeholder = NSLocalizedString("Location", comment: "Location placeholder")
+        
+        gardenSwitch.isOn = false
     }
     
     private func setupTableView() {
@@ -52,24 +60,27 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         propertiesTableView.tableFooterView = UIView()
     }
     
-    private func toggleSearchActivity(isActive: Bool) {
+    private func toggleSearch(inProgress: Bool) {
         
-        searchActivityIndicator.isHidden = !isActive
-        if isActive {
+        searchActivityIndicator.isHidden = !inProgress
+        
+        if inProgress {
             if !searchActivityIndicator.isAnimating {
                 searchActivityIndicator.startAnimating()
             }
-            if searchProgressView.isHidden {
-                searchProgressView.isHidden = false
-            }
+            searchProgressView.isHidden = false
+            locationTextField.isEnabled = false
+            gardenSwitch.isEnabled = false
+            searchButton.setTitle(NSLocalizedString("Stop", comment: "Stop button title"), for: .normal)
         }
         else {
-            if !isActive && searchActivityIndicator.isAnimating {
+            if !inProgress && searchActivityIndicator.isAnimating {
                 searchActivityIndicator.stopAnimating()
             }
-            if !searchProgressView.isHidden {
-                searchProgressView.isHidden = true
-            }
+            searchProgressView.isHidden = true
+            locationTextField.isEnabled = true
+            gardenSwitch.isEnabled = true
+            searchButton.setTitle(NSLocalizedString("Search", comment: "Search button title"), for: .normal)
         }
     }
     
@@ -122,27 +133,38 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func searchButtonTouched(_ sender: Any) {
         
-        startSearch()
+        _ = locationTextField.resignFirstResponder()
+        
+        if !(cache?.isFetching ?? false) || (cache?.isStopped ?? false) {
+            startSearch()
+        }
+        else {
+            cache?.stop()
+        }
     }
     
     // MARK: - Data integrations
     
     private func startSearch() {
         
-        guard let query = locationTextField.text?.nilIfEmpty else {
+        guard let _query = locationTextField.text?.nilIfEmpty else {
             let alert = UIAlertController.alertWithOKButton(message: NSLocalizedString("Please provide a location", comment: "Error message when location not provided"))
             present(alert, animated: true, completion: nil)
             return
         }
         
+        cache = nil
+        propertiesTableView.reloadData()
+        
         searchProgressView.progress = 0
-        toggleSearchActivity(isActive: true)
+        toggleSearch(inProgress: true)
+        
+        let query = _query + (gardenSwitch.isOn ? "/tuin" : "")
         
         cache = AanbodCache(query: query)
-        cache?.start {[weak self] in
-            self?.toggleSearchActivity(isActive: false)
-        }
-        
+        cache?.start(reset: true, finished: {[weak self] in
+            self?.toggleSearch(inProgress: false)
+        })
         cache?.dataUpdated = {[weak self] (progress) in
             self?.propertiesTableView.reloadData()
             self?.searchProgressView.progress = progress ?? 0
