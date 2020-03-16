@@ -8,16 +8,24 @@
 
 import Foundation
 
+/// Simple structure to implement a property
 struct Aanbod: JSONDeserializable {
     
+    /// Identifer, required
     let id: String
+    /// Agency, required
     let makelaar: Makelaar
+    /// URL, required
     let url: String
+    /// Location, required
     let woonplaats: String
+    /// Address, required
     let adres: String
     
+    /// Initializes object witj JSON - fails if not all required propertes are present
     init?(json: JSON) {
         
+        // Init fails if these properties are not present in json
         guard let __id = json[JSONKeys.id] as? String, let _id = __id.nilIfEmpty else {return nil}
         guard let _makelaarId = json[JSONKeys.makelaarId] as? Int else {return nil}
         guard let __makelaarNaam = json[JSONKeys.makelaarNaam] as? String, let _makelaarNaam = __makelaarNaam.nilIfEmpty else {return nil}
@@ -32,6 +40,7 @@ struct Aanbod: JSONDeserializable {
         self.adres = _adres
     }
     
+    /// Convenience initializer - used for testing
     init(id: String, makelaar: Makelaar, url: String, woonplaats: String, adres: String) {
         
         self.id = id
@@ -41,6 +50,7 @@ struct Aanbod: JSONDeserializable {
         self.adres = adres
     }
     
+    /// JSON keys
     private struct JSONKeys {
         static let id           = "Id"
         static let makelaarId   = "MakelaarId"

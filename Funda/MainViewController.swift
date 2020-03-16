@@ -8,19 +8,28 @@
 
 import UIKit
 
+/// Main View controller that performs search and listing
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    /// Displayes results
     @IBOutlet weak var propertiesTableView: UITableView!
     
+    // Header
     @IBOutlet weak var locationTextField: UITextField!
+    /// Filters to properties with garden
     @IBOutlet weak var gardenSwitch: UISwitch!
     @IBOutlet weak var gardenLabel: UILabel!
+    /// Starts search
     @IBOutlet weak var searchButton: UIButton!
     
+    // Visual feedback when searching
     @IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchProgressView: UIProgressView!
     
+    /// Cache to fetch and store results
     private var cache: AanbodCache?
+    
+    /// Cell reuse identifier
     private let cellReuseId = "aanbodCell"
     
     // MARK: - Controller lifecycle
@@ -63,6 +72,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         propertiesTableView.tableFooterView = UIView()
     }
     
+    /// Togles UI when searching: filter elements disabled, button title is stop otherwise search
     private func toggleSearch(inProgress: Bool) {
         
         searchActivityIndicator.isHidden = !inProgress
@@ -136,7 +146,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let aanbods = cache.aanbods(of: summary.makelaar)
         guard indexPath.row < aanbods.count else {return}
         let aanbod = aanbods[indexPath.row]
-        
+    
+        /// Open link in browser
         guard let url = URL(string: aanbod.url), UIApplication.shared.canOpenURL(url) else {return}
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
@@ -145,12 +156,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func searchButtonTouched(_ sender: Any) {
         
+        // Dismiss keyboard
         _ = locationTextField.resignFirstResponder()
         
         if !(cache?.isFetching ?? false) || (cache?.isStopped ?? false) {
+            // Not seatching or stopped, restart search
             startSearch()
         }
         else {
+            // Stop current search
             cache?.stop()
         }
     }
@@ -160,6 +174,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func startSearch() {
         
         guard let _query = locationTextField.text?.nilIfEmpty else {
+            // Must provide a location
             let alert = UIAlertController.alertWithOKButton(message: NSLocalizedString("Please provide a location", comment: "Error message when location not provided"))
             present(alert, animated: true, completion: nil)
             return

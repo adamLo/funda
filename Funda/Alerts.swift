@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
+/// Helper extension to display dialogs
 extension UIAlertController {
     
+    /// Shows a simple alert with an OK button - used to display errors
     static func alertWithOKButton(title: String? = nil, message: String? = nil) -> UIAlertController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

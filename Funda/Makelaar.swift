@@ -8,8 +8,11 @@
 
 import Foundation
 
+/// Structure to represent an agency
 struct Makelaar {
     
+    /// Identfier
     let id: Int
+    /// Name
     let name: String
 }
